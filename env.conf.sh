@@ -19,12 +19,12 @@ For successful execution, the script may require at various points: ${bld}apt-ge
 
 function askConsent {
     printf "\nSet up the environment? (Y/n) "
-    #read generalConsent # uncomment this line to use the script
-    generalConsent="y"  # dev purposes, comment out to use the script.
+    read generalConsent # uncomment this line to use the script
+    #generalConsent="y"  # dev purposes, comment out to use the script.
     generalConsent=${generalConsent^^}
     printf "\nPersonalize the environment (do not agree if you did not write this code)? (Y/n) "
-    #read personalConsent # uncomment this line to use the script
-    personalConsent="y" # dev purposes, comment out to use the script.
+    read personalConsent # uncomment this line to use the script
+    #personalConsent="y" # dev purposes, comment out to use the script.
     personalConsent=${personalConsent^^}
 
 }
@@ -46,7 +46,7 @@ function gitConfig {
 
     fi
 
-    git config --global core.editor emacs
+    git config --global core.editor emacs -nw
     git config --global format.pretty oneline
     git config --global color.ui true
     
