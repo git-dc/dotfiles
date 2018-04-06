@@ -1,13 +1,13 @@
 
 ;; counsel and swiper not available
-(setq package-list '(company yasnippet ivy nlinum))
+(setq package-list '(company yasnippet ivy swiper counsel nlinum))
 
 ;; load emacs 24's package system. Add melpa repo.
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list
    'package-archives
-   '("melpa" . "http://melpa.milkbox.net/packages") ; many packages won't show under melpa stable
+   '("melpa" . "http://melpa.milkbox.net/packages/") ; many packages won't show under melpa stable
    t))
 (package-initialize) ; load and activate packages
 
@@ -58,8 +58,8 @@
 (global-set-key (kbd "C-k") 'kill-line-from-anywhere)
 (global-set-key (kbd "C-<left>") 'left-word)
 (global-set-key (kbd "C-<right>") 'right-word)
-(global-set-key (kbd "M-[ h") 'beginning-of-visual-line)
-(global-set-key (kbd "M-[ f") 'end-of-visual-line)
+(global-set-key (kbd "M-[ h") 'move-beginning-of-line)
+(global-set-key (kbd "M-[ f") 'move-end-of-line)
 (global-set-key (kbd "M-[ d") 'left-word)
 (global-set-key (kbd "M-[ c") 'right-word)
 (global-set-key [(control ?h)] 'backward-kill-word)
