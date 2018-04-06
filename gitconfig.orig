@@ -1,9 +1,0 @@
-[user]
-	name = Daniel Chirita
-	email = dschirita@gmail.com
-[core]
-	editor = emacs -nw
-[color]
-	ui = true
-[format]
-	pretty = oneline
