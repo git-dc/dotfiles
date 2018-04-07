@@ -11,7 +11,7 @@ tmuxConsent="n"
 notsame=1;
 EXITCODE=0
 
-source ./includeFns.sh
+source ./includeFns.sh || { printf "\n${bld}RUN ./env.conf.sh IN ITS DIR. includeFns.sh HAS TO BE IN THE SAME DIR.${nrm}"; exit 1; }
 
 
 ################################  MAIN  ################################
@@ -23,20 +23,21 @@ askConsent
 
 #generalConsent="Y"
 
-if [ "$generalConsent" = "Y" ]
+if [ "$generalConsent" != "N" ]
 then
     printf "\nInitializing configuration...\n"
 
-    if [ $gitConsent = "Y" ]
+    if [ $gitConsent != "N" ]
     then 
 	gitConfig
     fi
 
-    if [ $emacsConsent = "Y" ]
+    if [ $emacsConsent != "N" ]
     then
 	emacsConfig
     fi
-    if [ $tmuxConsent = "Y" ]
+    
+    if [ $tmuxConsent != "N" ]
     then
 	tmuxConfig
     fi

@@ -43,7 +43,6 @@
   (beginning-of-visual-line)
   (kill-line))
 
-
 (global-unset-key (kbd "<f1>"))
 (global-unset-key (kbd "ESC <right>"))
 (global-unset-key (kbd "ESC <left>"))
@@ -72,6 +71,7 @@
 (global-set-key (kbd "M-<right>") 'windmove-right)
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<down>") 'windmove-down)
+(global-set-key (kbd "C-c C-c") 'compile)
 
 ;;(global-hl-line-mode t) ; highline current line
 

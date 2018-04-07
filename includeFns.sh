@@ -13,30 +13,31 @@ function askConsent {
     #generalConsent="y"  # dev purposes, comment out to use the script.
     generalConsent=${generalConsent^^}
 
-
-    printf "Configure git? (Y/n) "
-    read gitConsent # uncomment this line to use the script
-    #personalConsent="y" # dev purposes, comment out to use the script.
-    gitConsent=${gitConsent^^}
-
-    if [ $gitConsent = "Y" ]
+    if [ "$generalConsent" != "N" ]
     then
-	printf "Personalize git (do not agree if you did not write this code)? (Y/n) "
-	read personalConsent # uncomment this line to use the script
+	printf "Configure git? (Y/n) "
+	read gitConsent # uncomment this line to use the script
 	#personalConsent="y" # dev purposes, comment out to use the script.
-	personalConsent=${personalConsent^^}
+	gitConsent=${gitConsent^^}
+	
+	if [ "$gitConsent" = "Y" ]
+	then
+	    printf "Personalize git (do not agree if you did not write this code)? (Y/n) "
+	    read personalConsent # uncomment this line to use the script
+	    #personalConsent="y" # dev purposes, comment out to use the script.
+	    personalConsent=${personalConsent^^}
+	fi
+	
+	printf "Configure emacs? (Y/n) "
+	read emacsConsent # uncomment this line to use the script
+	#personalConsent="y" # dev purposes, comment out to use the script.
+	emacsConsent=${emacsConsent^^}
+	
+	printf "Configure tmux? (Y/n) "
+	read tmuxConsent # uncomment this line to use the script
+	#personalConsent="y" # dev purposes, comment out to use the script.
+	tmuxConsent=${tmuxConsent^^}
     fi
-
-    printf "Configure emacs? (Y/n) "
-    read emacsConsent # uncomment this line to use the script
-    #personalConsent="y" # dev purposes, comment out to use the script.
-    emacsConsent=${emacsConsent^^}
-
-    printf "Configure tmux? (Y/n) "
-    read tmuxConsent # uncomment this line to use the script
-    #personalConsent="y" # dev purposes, comment out to use the script.
-    tmuxConsent=${tmuxConsent^^}
-    
 }
 
 function areSame {
