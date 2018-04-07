@@ -1,6 +1,4 @@
-
-;; counsel and swiper not available
-(setq package-list '(company yasnippet ivy swiper counsel nlinum))
+(setq package-list '(company yasnippet ivy swiper counsel nlinum));; use-package))
 
 ;; load emacs 24's package system. Add melpa repo.
 (when (>= emacs-major-version 24)
@@ -43,6 +41,12 @@
   (beginning-of-visual-line)
   (kill-line))
 
+(defun bind-compile-for-cpp ()
+  "Unbinds `comment-region' and instead binds `compile' to C-c C-c in c++-mode."
+  (local-unset-key (kbd "C-c C-c"))
+  (locacl-set-key (kbd "C-c C-c") 'compile))
+
+
 (global-unset-key (kbd "<f1>"))
 (global-unset-key (kbd "ESC <right>"))
 (global-unset-key (kbd "ESC <left>"))
@@ -73,6 +77,11 @@
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<down>") 'windmove-down)
 (global-set-key (kbd "C-c C-c") 'compile)
+
+(add-hook 'c++-mode-hook 'bind-compile-for-cpp )
+
+;;(bind-key* "<C-c C-c>" 'compile)
+
 (global-set-key (kbd "C-c c") 'comment-line)
 
 ;;(global-hl-line-mode t) ; highline current line

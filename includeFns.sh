@@ -85,7 +85,7 @@ function emacsConfig {
     command -v emacs >/dev/null 2>&1 || {
 	echo >&2 "Emacs is not installed. Installing emacs...";
 	echo "running 'sudo apt-get install emacs";
-	sudo apt-get install emacs; }
+	sudo apt-get install emacs-nox; }
     areSame /home/$USER/.emacs.d/init.el ./emacs.init.el
     if [ "$notsame" = 1 ]
     then
