@@ -69,7 +69,7 @@ function gitConfig {
 	   printf " ~/.gitconfig ...\n"
 	   printf "Original git settings can be found in ./.gitconfig.orig or ~/.gitconfig.orig\n"
 	   cp /home/$USER/.gitconfig /home/$USER/.gitconfig.orig
-	   cp ./gitconfig home/$USER/.gitconfig
+	   cp ./gitconfig /home/$USER/.gitconfig
 	fi
     else
     
