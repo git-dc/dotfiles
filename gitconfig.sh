@@ -18,7 +18,7 @@ function gitConfig {
 #		rm /home/$USER/.gitconfig
 	    fi
 	    
-	    ln ./templates/gitconfig /home/$USER/.gitconfig
+	    ln -sb ./templates/gitconfig /home/$USER/.gitconfig
 #	fi
     else
 	

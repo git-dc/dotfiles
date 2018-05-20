@@ -20,7 +20,7 @@ function emacsConfig {
 	else
 	    mkdir /home/$USER/.emacs.d
 	fi
-        ln ./templates/emacs.init.el /home/$USER/.emacs.d/init.el
+        ln -sb ./templates/emacs.init.el /home/$USER/.emacs.d/init.el
 #    fi
     printf "\n${bld}emacs config done.${nrm}\n"
 }

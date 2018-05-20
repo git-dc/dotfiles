@@ -17,8 +17,8 @@ function bashConfig {
 #	    rm /home/$USER/.bash_aliases
 	fi
 	
-	ln ./templates/bashrc /home/$USER/.bashrc
-	ln ./templates/bash_aliases /home/$USER/.bash_aliases
+	ln -sb ./templates/bashrc /home/$USER/.bashrc
+	ln -sb ./templates/bash_aliases /home/$USER/.bash_aliases
 #    fi
 }
 

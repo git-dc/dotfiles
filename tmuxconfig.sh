@@ -8,13 +8,13 @@ function tmuxConfig {
 #    if [ "$notsame" = 1 ]
 #    then
 	printf "~/.tmux.conf ...\n"
-	printf "\nOriginal tmux settings can be found in ./origs/tmux.conf.orig\n or in ~/.tmux.conf.orig\n"
+	printf "\nOriginal tmux settings can be found in ./origs/tmux.conf.orig or in ~/.tmux.conf.orig\n"
 	if [ -f /home/$USER/.tmux.conf ]; then
 	    cp /home/$USER/.tmux.conf /home/$USER/.tmux.conf.orig
 	    mv /home/$USER/.tmux.conf ./origs/tmux.conf.orig
 #	    rm /home/$USER/.tmux.conf
 	fi    
-	ln ./templates/tmux.conf /home/$USER/.tmux.conf
+	ln -sb ./templates/tmux.conf /home/$USER/.tmux.conf
 
 #    fi
     printf "\n${bld}tmux config done.${nrm}\n"
