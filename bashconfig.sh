@@ -1,24 +1,11 @@
 function bashConfig {
     printf "\n${bld}bash config...${nrm}\n\n"
-#    areSame /home/$USER/.bashrc ./bashrc
-#    if [ "$notsame" = 1 ]
-#    then
-	printf " ~/.bashrc and ~/.bash_aliases ...\n"
-	printf "Original bash settings can be found in ./origs/bashrc.orig or ~/.bashrc.orig\n"
-	if [ -f /home/$USER/.bashrc ]; then
-	    cp /home/$USER/.bashrc /home/$USER/.bashrc.orig
-	    mv /home/$USER/.bashrc ./origs/bashrc.orig
-#	    rm /home/$USER/.bashrc
-	fi
-	
-	if [ -f /home/$USER/.bash_aliases ]; then
-	    cp /home/$USER/.bash_aliases /home/$USER/.bash_aliases.orig
-	    mv /home/$USER/.bash_aliases ./origs/bash_aliases.orig
-#	    rm /home/$USER/.bash_aliases
-	fi
-	
-	ln -sb ./templates/bashrc /home/$USER/.bashrc
-	ln -sb ./templates/bash_aliases /home/$USER/.bash_aliases
-#    fi
+    printf " ~/.bashrc and ~/.bash_aliases will be replaced with links to dc config\n"
+    printf "Original bash settings can be found in /home/$USER/.bashrc~ and /home/$USER/.bash_aliases~\n"	
+
+    ln -sb $PWD/templates/bashrc /home/$USER/.bashrc
+    ln -sb $PWD/templates/bash_aliases /home/$USER/.bash_aliases
+
+    printf "\n${bld}bash config done.${nrm}\n"
 }
 
