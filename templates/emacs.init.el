@@ -33,6 +33,14 @@
 (delete-selection-mode 1) ; replace selected text if selected 
 
 
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (setq indent-tabs-mode t)
+	    (setq tab-width 4)
+	    (setq python-indent-offset 4)))
+
+
+
 ;; key bindings (use M-x describe-key RET <your key sequence>)
 
 (defun kill-line-from-anywhere ()
