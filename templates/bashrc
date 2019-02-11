@@ -123,4 +123,5 @@ export PATH="/home/dc/work/drones/miniconda3/bin:$PATH"
 export PATH="/home/dc/.miniconda3/bin:$PATH"
 
 # added by dc to disable touch screen
-xinput disable $(xinput | grep Touchscreen | cut -f2 -d"=" | cut -f1 -d"[")
+#xinput disable $(xinput | grep Touchscreen | cut -f2 -d"=" | cut -f1 -d"[")
+export PS1+='\n>'
