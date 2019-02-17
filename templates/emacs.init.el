@@ -33,6 +33,22 @@
 (delete-selection-mode 1) ; replace selected text if selected 
 
 
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (setq indent-tabs-mode f)
+	    (setq tab-width 4)
+	    (setq python-indent-offset 4)))
+
+(defun comment-or-uncomment-region-or-line ()
+  "Comments or uncomments the region or the current line if there's no active region."
+  (interactive)
+  (let (beg end)
+    (if (region-active-p)
+	(setq beg (region-beginning) end (region-end))
+        (setq beg (line-beginning-position) end (line-end-position)))
+    (comment-or-uncomment-region beg end)))
+
+
 ;; key bindings (use M-x describe-key RET <your key sequence>)
 
 (defun kill-line-from-anywhere ()
@@ -58,6 +74,9 @@
 (global-unset-key (kbd "M-<left>"))
 (global-unset-key (kbd "C-k"))
 (global-unset-key (kbd "C-c C-c"))
+(global-unset-key (kbd "C-/"))
+(global-unset-key (kbd "C-w"))
+
 
 (global-set-key (kbd "C-k") 'kill-line-from-anywhere)
 (global-set-key (kbd "C-<left>") 'left-word)
@@ -66,7 +85,8 @@
 (global-set-key (kbd "M-[ f") 'move-end-of-line)
 (global-set-key (kbd "M-[ d") 'left-word)
 (global-set-key (kbd "M-[ c") 'right-word)
-(global-set-key [(control ?h)] 'backward-kill-word)
+;;(global-set-key [(control ?h)] 'backward-kill-word)
+(global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-a") 'help-command) ; help
 (global-set-key (kbd "<ESC><left>") 'windmove-left)
 (global-set-key (kbd "<ESC><right>") 'windmove-right)
@@ -77,6 +97,8 @@
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<down>") 'windmove-down)
 (global-set-key (kbd "C-c C-c") 'compile)
+(global-set-key (kbd "C-_") 'comment-or-uncomment-region-or-line)
+
 
 (add-hook 'c++-mode-hook 'bind-compile-for-cpp )
 

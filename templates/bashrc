@@ -116,6 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+<<<<<<< HEAD
 # CUDA 10 environment variables
 
 export PATH=$PATH:/usr/local/cuda-10.0/bin
@@ -124,3 +125,16 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.0/lib64
 
 # added by Miniconda3 installer
 export PATH="/home/ptz-pc/miniconda3/bin:$PATH"
+=======
+# added by Miniconda3 installer
+export PATH="/home/dc/work/drones/miniconda3/bin:$PATH"
+
+# added by Miniconda3 installer
+export PATH="/home/dc/.miniconda3/bin:$PATH"
+
+# added by dc to disable touch screen
+#xinput disable $(xinput | grep Touchscreen | cut -f2 -d"=" | cut -f1 -d"[")
+
+# added by dc to start cmd on newline |>
+export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$\n>"
+>>>>>>> e7c95b1774040cc3cdc1bb7c02516c17c0a0b398
