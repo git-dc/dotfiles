@@ -115,3 +115,12 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# CUDA 10 environment variables
+
+export PATH=$PATH:/usr/local/cuda-10.0/bin
+export CUDADIR=/usr/local/cuda-10.0
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.0/lib64
+
+# added by Miniconda3 installer
+export PATH="/home/ptz-pc/miniconda3/bin:$PATH"
