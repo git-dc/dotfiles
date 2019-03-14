@@ -1,5 +1,5 @@
-(setq package-list '(company yasnippet ivy swiper counsel nlinum));; use-package))
-
+;; FIRST LAUNCH SETUP STUFF:
+(setq package-list '(company yasnippet ivy swiper counsel nlinum ac-js2 js2-mode js2-refactor));; use-package))
 ;; load emacs 24's package system. Add melpa repo.
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -15,12 +15,14 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-
 ;; install the missing packages
 
 (dolist (package package-list)
   (unless (package-installed-p package)
-	(package-install package)))
+    (package-install package)))
+
+;; END OF FIRST LAUNCH SETUP STUFF
+
 
 
 ;; general emacs settings
@@ -39,6 +41,8 @@
 	    (setq tab-width 4)
 	    (setq python-indent-offset 4)))
 
+;; custom functions:
+
 (defun comment-or-uncomment-region-or-line ()
   "Comments or uncomments the region or the current line if there's no active region."
   (interactive)
@@ -47,9 +51,6 @@
 	(setq beg (region-beginning) end (region-end))
         (setq beg (line-beginning-position) end (line-end-position)))
     (comment-or-uncomment-region beg end)))
-
-
-;; key bindings (use M-x describe-key RET <your key sequence>)
 
 (defun kill-line-from-anywhere ()
   "Run `beginning-of-visual-line' and `kill-line' in sequence."
@@ -62,6 +63,7 @@
   (local-unset-key (kbd "C-c C-c"))
   (locacl-set-key (kbd "C-c C-c") 'compile))
 
+;; key bindings (use M-x describe-key RET <your key sequence>)
 
 (global-unset-key (kbd "<f1>"))
 (global-unset-key (kbd "ESC <right>"))
@@ -75,7 +77,8 @@
 (global-unset-key (kbd "C-k"))
 (global-unset-key (kbd "C-c C-c"))
 (global-unset-key (kbd "C-/"))
-(global-unset-key (kbd "C-w"))
+(global-unset-key (kbd "C-x C-u"))
+;; (global-unset-key (kbd "C-w"))
 
 
 (global-set-key (kbd "C-k") 'kill-line-from-anywhere)
@@ -85,8 +88,8 @@
 (global-set-key (kbd "M-[ f") 'move-end-of-line)
 (global-set-key (kbd "M-[ d") 'left-word)
 (global-set-key (kbd "M-[ c") 'right-word)
-;;(global-set-key [(control ?h)] 'backward-kill-word)
-(global-set-key (kbd "C-w") 'backward-kill-word)
+(global-set-key [(control ?h)] 'backward-kill-word)
+;; (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-a") 'help-command) ; help
 (global-set-key (kbd "<ESC><left>") 'windmove-left)
 (global-set-key (kbd "<ESC><right>") 'windmove-right)
@@ -118,17 +121,13 @@
 
 ;; highlights the present line with a very faint glow
 
-;;(set-face-attribute 'hl-line nil :background "#4C4C4C")
-;;(set-face-attribute 'linum-highlight-face nil :weight 'bold :background "#4C4C4C" :foreground "#9FC59F")
-;;(set-face-attribute 'linum nil :foreground "#537953")
+;; (set-face-attribute 'hl-line nil :background "#4C4C4C")
+;; (set-face-attribute 'linum-highlight-face nil :weight 'bold :background "#4C4C4C" :foreground "#9FC59F")
+;; (set-face-attribute 'linum nil :foreground "#537953")
 
 
 ;; flycheck
-
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
-
-
-
 
 ;; ivy
 (ivy-mode)
@@ -168,7 +167,24 @@
                     :background "gray50"
                     :box '(:line-width 1 :style releasedbutton)
                     )
+;;; javascript stuff
 
+;; javascript coloring
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+(setq ac-js2-evaluate-calls t) ; allows ac-js2 to evaluate custom code and try to color
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;; Better imenu
+(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+(add-hook 'js2-mode-hook #'js2-refactor-mode)
+(js2r-add-keybindings-with-prefix "C-c C-r")
+(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+
+;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
+;; unbind it.
+;; (define-key js-mode-map (kbd "M-.") nil)
+
+;; (add-hook 'js2-mode-hook (lambda ()
+;; 			     (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
 
 
