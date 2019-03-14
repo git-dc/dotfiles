@@ -119,6 +119,16 @@
 
 (global-visual-line-mode 1) ; text wrapping
 
+(electric-pair-mode 1) ; auto close bracket insertion. New in emacs 24
+;; make electric-pair-mode work on more brackets
+(setq electric-pair-pairs
+      '(
+	(?\" . ?\")
+	(?\{ . ?\})
+	(?\' . ?\')
+	))
+
+
 ;; highlights the present line with a very faint glow
 
 ;; (set-face-attribute 'hl-line nil :background "#4C4C4C")
