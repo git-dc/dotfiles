@@ -1,5 +1,5 @@
 ;; FIRST LAUNCH SETUP STUFF:
-(setq package-list '(company yasnippet ivy swiper counsel nlinum ac-js2 js2-mode js2-refactor));; use-package))
+(setq package-list '(company yasnippet ivy swiper counsel ac-js2 js2-mode js2-refactor));; nlinum-relative use-package))
 ;; load emacs 24's package system. Add melpa repo.
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -114,17 +114,10 @@
 (show-paren-mode 1) ; highlight matching parens
 
 (global-linum-mode t) ; always show line numbers
-
 (setq linum-format "%-3d\u2502") ; 4 digits accounted for with left justification
-
 (global-visual-line-mode 1) ; text wrapping
 
 ;; highlights the present line with a very faint glow
-
-;; (set-face-attribute 'hl-line nil :background "#4C4C4C")
-;; (set-face-attribute 'linum-highlight-face nil :weight 'bold :background "#4C4C4C" :foreground "#9FC59F")
-;; (set-face-attribute 'linum nil :foreground "#537953")
-
 
 ;; flycheck
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
@@ -191,3 +184,15 @@
 
 
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (js2-refactor ac-js2 yasnippet counsel company))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
