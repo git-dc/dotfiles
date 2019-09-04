@@ -1,5 +1,5 @@
 ;; FIRST LAUNCH SETUP STUFF:
-(setq package-list '(company yasnippet ivy swiper counsel nlinum ac-js2 js2-mode js2-refactor));; use-package))
+(setq package-list '(company yasnippet ivy swiper counsel ac-js2 js2-mode js2-refactor));; use-package))
 ;; load emacs 24's package system. Add melpa repo.
 (when (>= emacs-major-version 24)
   (require 'package)
