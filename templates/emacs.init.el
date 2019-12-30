@@ -197,7 +197,28 @@
 ;; 			     (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
 
+;; Modelica
 
+(setq load-path (cons "~/elisp" load-path))
+(autoload 'modelica-mode "modelica-mode" "Modelica Editing Mode" t)
+(setq auto-mode-alist (cons '("\.mo$" . modelica-mode) auto-mode-alist))
+
+;; Modelica browsing
+(autoload 'mdc-browse "mdc-browse" "Modelica Class Browsing" t)
+(autoload 'br-mdc "br-mdc" "Modelica Class Browsing" t)
+
+(defvar br-env-lang-avector
+  '[
+    ("C++/C"   . "c++-")
+    ("Eiffel"  . "eif-")
+    ("Info"    . "info-")
+    ("Java"    . "java-")
+    ("Lisp"    . "clos-")
+    ("Modelica" . "mdc-")
+    ("Obj-C"   . "objc-")
+    ("Python"  . "python-")
+    ]
+  "Association vector of elements of OO-Browser languages.")
 
 
 
