@@ -1,5 +1,6 @@
 ;; FIRST LAUNCH SETUP STUFF:
-(setq package-list '(company yasnippet ivy swiper counsel ac-js2 js2-mode js2-refactor));; nlinum-relative use-package))
+(setq package-list '(company yasnippet ivy swiper counsel ac-js2 js2-mode js2-refactor));; use-package))
+
 ;; load emacs 24's package system. Add melpa repo.
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -117,6 +118,16 @@
 (setq linum-format "%-3d\u2502") ; 4 digits accounted for with left justification
 (global-visual-line-mode 1) ; text wrapping
 
+(electric-pair-mode 1) ; auto close bracket insertion. New in emacs 24
+;; make electric-pair-mode work on more brackets
+(setq electric-pair-pairs
+      '(
+	(?\" . ?\")
+	(?\{ . ?\})
+	(?\' . ?\')
+	))
+
+
 ;; highlights the present line with a very faint glow
 
 ;; flycheck
@@ -180,7 +191,28 @@
 ;; 			     (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
 
+;; Modelica
 
+(setq load-path (cons "~/elisp" load-path))
+(autoload 'modelica-mode "modelica-mode" "Modelica Editing Mode" t)
+(setq auto-mode-alist (cons '("\.mo$" . modelica-mode) auto-mode-alist))
+
+;; Modelica browsing
+(autoload 'mdc-browse "mdc-browse" "Modelica Class Browsing" t)
+(autoload 'br-mdc "br-mdc" "Modelica Class Browsing" t)
+
+(defvar br-env-lang-avector
+  '[
+    ("C++/C"   . "c++-")
+    ("Eiffel"  . "eif-")
+    ("Info"    . "info-")
+    ("Java"    . "java-")
+    ("Lisp"    . "clos-")
+    ("Modelica" . "mdc-")
+    ("Obj-C"   . "objc-")
+    ("Python"  . "python-")
+    ]
+  "Association vector of elements of OO-Browser languages.")
 
 
 
