@@ -8,3 +8,49 @@ nano
 git
 man-db
 expac
+xfce4 xfce4-goodies
+[ ] //jupyter
+[ ] //miniconda
+[ ] //openmodelica
+[ ] //mononoki
+[ ] //insync
+[ ] //npm
+[ ] //tldr
+[ ] //qucs
+[ ] //shutter
+[ ] //xpad
+[ ] //wget
+[ ] //julia
+[ ] //openrocket
+[ ] //modelio
+[ ] //rasaero
+[ ] //arduino
+[ ] //gnuradio
+[ ] //system-monitor
+mesa
+xorg
+firefox
+	ublock
+	session-manager
+	//shodan
+	//flowcrypt
+	//noscript
+	//
+pulseaudio-alsa
+pulseaudio-bluetooth
+pulseaudio-equalizer
+pulseaudio-jack
+pavucontrol
+tlp // sudo tlp start --> ~/.zshrc
+htop
+tar
+zip
+
+
+gimp
+inkscape
+libxml2
+python2-lxml
+python-numpy
+python2-numpy
+xdg-user-dirs
