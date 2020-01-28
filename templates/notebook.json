@@ -1,0 +1,31 @@
+{
+    "load_extensions": {
+	"egal/main": true,
+	"jupyter-notebook-gist/notebook-extension": true,
+	"jupyter-notebook-gist/tree-extension": true,
+	"jupyter-notebook-gist/common": true,
+	"jupyter-js-widgets/extension": true
+    },
+    "Cell": {
+	"cm_config": {
+	"lineNumbers": true,
+	"lineWrapping": true
+	}
+    },
+    "keys": {
+	"command": {
+	    "bind": {
+		"ctrl-alt-enter": "jupyter-notebook:restart-kernel-and-run-all-cells"
+	    }
+	}
+    },
+    "Editor": {
+	"codemirror_options": {
+	    "vimMode": false,
+	    "keyMap": "emacs"
+	},
+	"file_extension_modes": {
+	    ".py": "Python"
+	}
+    }
+}

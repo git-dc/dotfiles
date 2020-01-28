@@ -1,3 +1,3 @@
 # dot files
-Installs (if needed) and configures git, bash, and emacs. To run, in bash: 
+Installs (if needed) and configures git, zsh, emacs, jupyter service, user directories, and tlp. To run, in bash/zsh: 
 $ ./env.conf.sh

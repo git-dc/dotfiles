@@ -1,0 +1,16 @@
+[Unit]
+Description=Jupyter Workplace
+
+[Service]
+Type=simple
+PIDFile=/run/jupyter.pid
+ExecStart=/usr/bin/jupyter-notebook --config=/home/dc/.dotfiles/templates/jupyter_notebook_config.py --notebook-dir=/home/dc/work/
+# --certfile=/home/dc/.jupyter/jupcert.pem --keyfile=/home/dc/.jupyter/jupkey.key
+User=dc
+Group=dc
+WorkingDirectory=/home/dc/work
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -41,7 +41,7 @@ pulseaudio-bluetooth
 pulseaudio-equalizer
 pulseaudio-jack
 pavucontrol
-tlp // sudo tlp start --> ~/.zshrc
+tlp
 htop
 tar
 zip
@@ -54,3 +54,5 @@ python2-lxml
 python-numpy
 python2-numpy
 xdg-user-dirs
+kicad kicad-library
+kicad-library-3d
