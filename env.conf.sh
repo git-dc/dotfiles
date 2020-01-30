@@ -12,18 +12,20 @@ source ./zshconfig.sh
 source ./jupconfig.sh
 source ./xdgconfig.sh
 source ./tlpconfig.sh
+source ./powertopconfig.sh
 
 ################################  MAIN  ################################
 
 printf "\nInitializing configuration...\n"
 
-gitConfig
-emacsConfig    
-# bashConfig
+gitconfig
+emacsconfig    
+# bashconfig
 jupconfig
 xdgconfig
 zshconfig
 tlpconfig
+powertopconfig
 
 printf "\nEnvironment configuration script exitting with exit code $EXITCODE.\n"
 

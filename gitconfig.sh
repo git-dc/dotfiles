@@ -1,4 +1,4 @@
-function gitConfig {
+function gitconfig {
     printf "\n${bld}git config...${nrm}\n\n"
     command -v git >/dev/null 2>&1 || {
 	echo >&2 "Git is not installed. Installing git...";

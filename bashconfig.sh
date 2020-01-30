@@ -1,4 +1,4 @@
-function bashConfig {
+function bashconfig {
     printf "\n${bld}bash config...${nrm}\n\n"
     printf " ~/.bashrc and ~/.bash_aliases will be replaced with links to dc config\n"
     printf "Original bash settings can be found in /home/$USER/.bashrc~ and /home/$USER/.bash_aliases~\n"	

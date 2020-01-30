@@ -1,4 +1,4 @@
-function emacsConfig {
+function emacsconfig {
     printf "\n${bld}emacs config...${nrm}\n\n"
     command -v emacs >/dev/null 2>&1 || {
 	echo >&2 "Emacs is not installed. Installing emacs...";
