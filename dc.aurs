@@ -1,4 +1,3 @@
-emacs-nox
 parted
 networkmanager
 sudo
@@ -9,15 +8,48 @@ git
 man-db
 expac
 xfce4 xfce4-goodies
-[ ] //jupyter
-[ ] //miniconda
-[ ] //openmodelica
-[ ] //mononoki
-[ ] //insync
+pikaur
+tldr
+pdftk
+mesa
+xorg
+pulseaudio-alsa
+pulseaudio-bluetooth
+pulseaudio-equalizer
+pulseaudio-jack
+pavucontrol
+htop
+tar
+zip
+x264
+flac
+firefox // add-ons:
+	ublock
+	session-manager
+	tab-suspender
+	pocket
+	//shodan
+	//flowcrypt
+	//noscript
+	//
+
+// installed by dotfiles:
+tlp
+powertop
+emacs-nox
+xdg-user-dirs
+
+// optional:
+gimp
+inkscape
+libxml2
+python2-lxml
+python-numpy
+//python2-numpy
+kicad kicad-library
+kicad-library-3d
 [ ] //npm
-[ ] //tldr
 [ ] //qucs
-[ ] //shutter
 [ ] //xpad
 [ ] //wget
 [ ] //julia
@@ -26,33 +58,7 @@ xfce4 xfce4-goodies
 [ ] //rasaero
 [ ] //arduino
 [ ] //gnuradio
-[ ] //system-monitor
-mesa
-xorg
-firefox
-	ublock
-	session-manager
-	//shodan
-	//flowcrypt
-	//noscript
-	//
-pulseaudio-alsa
-pulseaudio-bluetooth
-pulseaudio-equalizer
-pulseaudio-jack
-pavucontrol
-tlp
-htop
-tar
-zip
-
-
-gimp
-inkscape
-libxml2
-python2-lxml
-python-numpy
-python2-numpy
-xdg-user-dirs
-kicad kicad-library
-kicad-library-3d
+[ ] //miniconda
+[ ] //openmodelica
+[ ] //mononoki
+[x] //insync // - pikaurark
