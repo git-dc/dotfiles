@@ -54,11 +54,15 @@ kicad-library-3d
 [ ] //wget
 [ ] //julia
 [ ] //openrocket
-[ ] //modelio
+[ ] modelio-bin // - pikaur
 [ ] //rasaero
 [ ] //arduino
 [ ] //gnuradio
 [ ] //miniconda
 [ ] //openmodelica
 [ ] //mononoki
-[x] //insync // - pikaurark
+[x] //insync // - pikaur
+ark
+blueman
+bluez
+bluez-utils
