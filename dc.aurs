@@ -23,6 +23,7 @@ tar
 zip
 x264
 flac
+xarchiver
 firefox // add-ons:
 	ublock
 	session-manager
@@ -62,7 +63,6 @@ kicad-library-3d
 [ ] //openmodelica
 [ ] //mononoki
 [x] //insync // - pikaur
-ark
 blueman
 bluez
 bluez-utils
