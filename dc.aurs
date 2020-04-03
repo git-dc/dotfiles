@@ -24,6 +24,9 @@ zip
 x264
 flac
 xarchiver
+blueman
+bluez
+bluez-utils
 firefox // add-ons:
 	ublock
 	session-manager
@@ -41,28 +44,44 @@ emacs-nox
 xdg-user-dirs
 
 // optional:
-gimp
-inkscape
-libxml2
-python2-lxml
-python-numpy
-//python2-numpy
-kicad kicad-library
-kicad-library-3d
+[x] gimp
+[x] inkscape
+[x] libxml2
+[x] python2-lxml
+[x] python-numpy
+[ ] //python2-numpy
+[x] kicad kicad-library
+[x] kicad-library-3d
 [ ] //npm
 [ ] //qucs
 [ ] //xpad
 [ ] //wget
 [ ] //julia
 [ ] //openrocket
-[ ] modelio-bin // - pikaur
+[x] modelio-bin // - pikaur
 [ ] //rasaero
-[ ] //arduino
+[x] arduino 
 [ ] //gnuradio
 [ ] //miniconda
-[ ] //openmodelica
+[ ] //openmodelica // - doesn't work on arch
 [ ] //mononoki
-[x] //insync // - pikaur
-blueman
-bluez
-bluez-utils
+[x] insync // - pikaur
+
+
+// zfs support
+[ ] linux-headers // - pikaur
+[ ] dkms // - pikaur
+[ ] spl-utils // - pikaur
+[ ] spl-dkms // - pikaur
+[ ] zfs-utils // - pikaur
+[ ] zfs-dkms // - pikaur
+// sudo systemctl enable zfs-import-cache
+// sudo systemctl enable zfs-mount
+// sudo systemctl enable zfs-import.target
+// sudo systemctl enable zfs.target
+// sudo systemctl start zfs.target
+// sudo modprobe zfs
+// sudo zpool status
+// // 'no pools available'
+
+
