@@ -1,0 +1,14 @@
+1.  To install zfsd access tools on a frech system do the following:
+1.a Run zfsconfig.sh to install dependencies;
+1.b Run $ zpool mount -a;
+1.c Run $ zpool status;
+1.d Profit.
+
+2.  To back up a repo to zfsd/bakpool do the following:
+2.a Run $ cd /bakpool/main/srv/git/;
+2.b Run $ git clone --bare $PATH; where PATH is the path to repo of interest;
+2.c Run $ git init --bare --shared;
+2.d Profit.
+
+
+
