@@ -1,3 +1,4 @@
+Reference: https://kiljan.org/2018/09/23/a-reference-guide-to-zfs-on-arch-linux/
 1.  To install zfsd access tools on a frech system do the following:
 1.a Run zfsconfig.sh to install dependencies;
 1.b Run $ zpool mount -a;
