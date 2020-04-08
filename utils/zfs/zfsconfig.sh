@@ -4,7 +4,6 @@
 
 sudo pacman -S --needed base-devel
 sudo pacman -S smartmontools
-pikaur -S linux-headers
 pikaur -S dkms
 pikaur -S spl-utils
 pikaur -S spl-dkms
