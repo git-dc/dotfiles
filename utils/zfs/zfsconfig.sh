@@ -2,13 +2,8 @@
 
 # pikaur should be installed
 
-sudo pacman -S --needed base-devel
-sudo pacman -S smartmontools
-pikaur -S dkms
-pikaur -S spl-utils
-pikaur -S spl-dkms
-pikaur -S zfs-utils
-pikaur -S zfs-dkms
+sudo pacman -S --needed base-devel smartmontools
+pikaur -S --needed dkms zfs-utils zfs-dkms
 
 sudo systemctl enable zfs-import-cache
 sudo systemctl enable zfs-mount

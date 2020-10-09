@@ -2,9 +2,8 @@
 Description=Powertop tunings
 
 [Service]
-Type=exec
+Type=oneshot
 ExecStart=/usr/bin/powertop --auto-tune
-RemainAfterExit=true
 
 [Install]
 WantedBy=multi-user.target

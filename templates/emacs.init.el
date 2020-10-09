@@ -101,7 +101,7 @@
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<down>") 'windmove-down)
 (global-set-key (kbd "C-c C-c") 'compile)
-(global-set-key (kbd "C-_") 'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "C-/") 'comment-or-uncomment-region-or-line)
 
 
 (add-hook 'c++-mode-hook 'bind-compile-for-cpp )
@@ -146,7 +146,7 @@
 ;; yasnippets
 
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-(setq yas/indent-line nil)
+(setq yas-indent-line nil)
 (yas-global-mode 1)
 
 ;; company abbreviation in the window using dabbrev and yasnippets search with company
