@@ -27,6 +27,8 @@ xarchiver
 blueman
 bluez
 bluez-utils
+battery-stats-git // - pikaur
+gnuplot
 firefox // add-ons:
 	ublock
 	session-manager
