@@ -1,56 +1,61 @@
-;; FIRST LAUNCH SETUP STUFF:
-;; problematic packages:
-;; better-defaults material-theme elpy company ac-js2 js2-mode js2-refactor
-(setq package-list '(company yasnippet ivy swiper counsel));; use-package))
-;; load emacs 24's package system. Add melpa repo.
+;; .emacs.d/init.el
 
-;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;; 			 ("marmalade" . "http://marmalade-repo.org/packages/")
-;; 			 ("melpa" . "http://melpa.org/packages/")))
-
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
-   '("melpa" . "http://melpa.milkbox.net/packages/" ) t))
-;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
-;; and `package-pinned-packages`. Most users will not need or want to do this.
-;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize) ; load and activate packages
-
-
-;; fetch the list of packages available
-
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+;; Initializes the package infrastructure
+(package-initialize)
+;; If there are no archived package contents, refresh them
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; install the missing packages
+;; Installs packages
 
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+;; myPackages contains a list of package names
+(defvar myPackages
+  '(better-defaults material-theme company yasnippet ivy swiper counsel elpy) )
 
-;; END OF FIRST LAUNCH SETUP STUFF
-
-
-
-;; general emacs settings
+;; Scans the list in myPackages
+;; If the package listed is not already installed, install it
+(mapc #'(lambda (package)
+          (unless (package-installed-p package)
+            (package-install package)))
+      myPackages)
 
 (setq c-basic-offset 4) ; indents 4 chars
 (setq tab-width 4) ; tab is 4 chars
 (setq indent-tabs-mode nil) ; force use of spaces
-(setq inhibit-startup-screen t) ; inhibit the startup screen
+(setq inhibit-startup-message t)    ;; Hide the startup message
+(load-theme 'material t)            ;; Load material theme
+(global-linum-mode t)               ;; Enable line numbers globally
+(setq linum-format "%-3d\u2502") ; 4 digits accounted for with left justification
+(global-visual-line-mode 1) ; text wrapping
+(show-paren-mode 1)                 ;; highlight matching parens
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode)) ; open .h files in c++ mode
-(delete-selection-mode 1) ; replace selected text if selected 
+(delete-selection-mode 1) ; replace selected text if selected
+(electric-pair-mode 1) ; auto close bracket insertion. New in emacs 24
+;; make electric-pair-mode work on more brackets
+(setq electric-pair-pairs
+      '(
+	(?\" . ?\")
+	(?\{ . ?\})
+	(?\' . ?\')
+	))
 
 
-(add-hook 'python-mode-hook
-	  (lambda ()
-	    (setq indent-tabs-mode f)
-	    (setq tab-width 4)
-	    (setq python-indent-offset 4)))
+;; Python config
+;; (add-hook 'python-mode-hook
+	  ;; (lambda ()
+	    ;; (setq indent-tabs-mode f)
+	    ;; (setq tab-width 4)
+	    ;; (setq python-indent-offset 4)
+	    ;;))
 
-;; custom functions:
+;; (add-hook 'python-mode-hook
+	  ;; (lambda ()
+	    ;; ))
+
+;; Custom functions:
 
 (defun comment-or-uncomment-region-or-line ()
   "Comments or uncomments the region or the current line if there's no active region."
@@ -72,86 +77,57 @@
   (local-unset-key (kbd "C-c C-c"))
   (locacl-set-key (kbd "C-c C-c") 'compile))
 
+
 ;; key bindings (use M-x describe-key RET <your key sequence>)
 
 (global-unset-key (kbd "<f1>"))
-(global-unset-key (kbd "ESC <right>"))
-(global-unset-key (kbd "ESC <left>"))
-(global-unset-key (kbd "ESC <up>"))
-(global-unset-key (kbd "ESC <down>"))
+(global-unset-key (kbd "M-c"))
+;(global-unset-key (kbd "ESC <right>"))
+;(global-unset-key (kbd "ESC <left>"))
+;(global-unset-key (kbd "ESC <up>"))
+;(global-unset-key (kbd "ESC <down>"))
 (global-unset-key (kbd "M-<right>"))
 (global-unset-key (kbd "M-<left>"))
-(global-unset-key (kbd "M-<right>"))
-(global-unset-key (kbd "M-<left>"))
-(global-unset-key (kbd "C-k"))
-(global-unset-key (kbd "C-c C-c"))
-(global-unset-key (kbd "C-/"))
-(global-unset-key (kbd "C-x C-u"))
-;; (global-unset-key (kbd "C-w"))
+(global-unset-key (kbd "M-<up>"))
+(global-unset-key (kbd "M-<down>"))
+;(global-unset-key (kbd "C-k"))
+;(global-unset-key (kbd "C-c C-c"))
+;(global-unset-key (kbd "C-/"))
+;(global-unset-key (kbd "C-x C-u"))
 
-
-(global-set-key (kbd "C-k") 'kill-line-from-anywhere)
-(global-set-key (kbd "C-<left>") 'left-word)
-(global-set-key (kbd "C-<right>") 'right-word)
-(global-set-key (kbd "M-[ h") 'move-beginning-of-line)
-(global-set-key (kbd "M-[ f") 'move-end-of-line)
-(global-set-key (kbd "M-[ d") 'left-word)
-(global-set-key (kbd "M-[ c") 'right-word)
-(global-set-key [(control ?h)] 'backward-kill-word)
+;; key bindings 
+;; (global-set-key (kbd "C-k") 'kill-line-from-anywhere)
+;; (global-set-key (kbd "C-<left>") 'left-word)
+;; (global-set-key (kbd "C-<right>") 'right-word)
+;; (global-set-key (kbd "M-[ h") 'move-beginning-of-line)
+;; (global-set-key (kbd "M-[ f") 'move-end-of-line)
+;; (global-set-key (kbd "M-[ d") 'left-word)
+;; (global-set-key (kbd "M-[ c") 'right-word)
+;; (global-set-key [(control ?h)] 'backward-kill-word)
 ;; (global-set-key (kbd "C-w") 'backward-kill-word)
-(global-set-key (kbd "C-a") 'help-command) ; help
-(global-set-key (kbd "<ESC><left>") 'windmove-left)
-(global-set-key (kbd "<ESC><right>") 'windmove-right)
-(global-set-key (kbd "<ESC><up>") 'windmove-up)
-(global-set-key (kbd "<ESC><down>") 'windmove-down)
+;; (global-set-key (kbd "C-a") 'help-command) ; help
+;; (global-set-key (kbd "<ESC><left>") 'windmove-left)
+;; (global-set-key (kbd "<ESC><right>") 'windmove-right)
+;; (global-set-key (kbd "<ESC><up>") 'windmove-up)
+;; (global-set-key (kbd "<ESC><down>") 'windmove-down)
 (global-set-key (kbd "M-<left>") 'windmove-left)
 (global-set-key (kbd "M-<right>") 'windmove-right)
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<down>") 'windmove-down)
-(global-set-key (kbd "C-c C-c") 'compile)
-(global-set-key (kbd "C-/") 'comment-or-uncomment-region-or-line)
+;; (global-set-key (kbd "C-c C-c") 'compile)
+(global-set-key (kbd "M-c") 'comment-or-uncomment-region-or-line)
+
+;; (define-key elpy-mode-map (kbd "M-<right>") 'windmove-right)
 
 
-(add-hook 'c++-mode-hook 'bind-compile-for-cpp )
-
-;;(bind-key* "<C-c C-c>" 'compile)
-
-(global-set-key (kbd "C-c c") 'comment-line)
-
-;;(global-hl-line-mode t) ; highline current line
-
-(show-paren-mode 1) ; highlight matching parens
-
-(global-linum-mode t) ; always show line numbers
-(setq linum-format "%-3d\u2502") ; 4 digits accounted for with left justification
-(global-visual-line-mode 1) ; text wrapping
-
-(electric-pair-mode 1) ; auto close bracket insertion. New in emacs 24
-;; make electric-pair-mode work on more brackets
-(setq electric-pair-pairs
-      '(
-	(?\" . ?\")
-	(?\{ . ?\})
-	(?\' . ?\')
-	))
-
-
-;; highlights the present line with a very faint glow
-
+;; c++ config
 ;; flycheck
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;; ivy
 (ivy-mode)
 
-;;(global-set-key (kbd "C-s") 'swiper)
-;;(global-set-key (kbd "M-x") 'counsel-M-x)
-;;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-;;(global-set-key (kbd "C-s") 'counsel)
 
-
-
-;; yasnippets
 
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (setq yas-indent-line nil)
@@ -179,49 +155,39 @@
                     :background "gray50"
                     :box '(:line-width 1 :style releasedbutton)
                     )
-;; ;;; javascript stuff
 
-;; ;; javascript coloring
-;; (add-hook 'js2-mode-hook 'ac-js2-mode)
-;; (setq ac-js2-evaluate-calls t) ; allows ac-js2 to evaluate custom code and try to color
-;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-;; ;; Better imenu
-;; (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
-;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
-;; (js2r-add-keybindings-with-prefix "C-c C-r")
-;; (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+;; Elpy customizations:
+(elpy-enable)
+(add-hook 'elpy-mode-hook (lambda ()
+                            (add-hook 'before-save-hook
+                                      'elpy-format-code nil t)
+			    ))
 
-;; ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
-;; ;; unbind it.
-;; ;; (define-key js-mode-map (kbd "M-.") nil)
-
-;; ;; (add-hook 'js2-mode-hook (lambda ()
-;; ;; 			     (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+(eval-after-load "elpy"
+  '(cl-dolist (key '("M-<up>" "M-<down>" "M-<left>" "M-<right>"))
+     (define-key elpy-mode-map (kbd key) nil)))
+(when (load "flycheck" t t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 
-;; Modelica
 
-(setq load-path (cons "~/.emacs.d/elisp/" load-path))
-(autoload 'modelica-mode "modelica-mode" "Modelica Editing Mode" t)
-(setq auto-mode-alist (cons '("\.mo$" . modelica-mode) auto-mode-alist))
+;; Elpy company yasnippets conflict resolution:
+(defun company-yasnippet-or-completion ()
+  "Solve company yasnippet conflicts."
+  (interactive)
+  (let ((yas-fallback-behavior
+         (apply 'company-complete-common nil)))
+    (yas-expand)))
 
-;; Modelica browsing
-(autoload 'mdc-browse "mdc-browse" "Modelica Class Browsing" t)
-(autoload 'br-mdc "br-mdc" "Modelica Class Browsing" t)
+(add-hook 'company-mode-hook
+          (lambda ()
+            (substitute-key-definition
+             'company-complete-common
+             'company-yasnippet-or-completion
+             company-active-map)))
 
-(defvar br-env-lang-avector
-  '[
-    ("C++/C"   . "c++-")
-    ("Eiffel"  . "eif-")
-    ("Info"    . "info-")
-    ("Java"    . "java-")
-    ("Lisp"    . "clos-")
-    ("Modelica" . "mdc-")
-    ("Obj-C"   . "objc-")
-    ("Python"  . "python-")
-    ]
-  "Association vector of elements of OO-Browser languages.")
-
+;; User-Defined init.el ends here
 
 
 (custom-set-variables
@@ -229,11 +195,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(material-theme gnu-elpa gnu-elpa-keyring-update elpy pylint js2-refactor ac-js2 yasnippet counsel company)))
+ '(package-selected-packages '(flycheck elpy material-theme company better-defaults)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
