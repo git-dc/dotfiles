@@ -1,13 +1,21 @@
 ;; FIRST LAUNCH SETUP STUFF:
-(setq package-list '(company yasnippet ivy swiper counsel ac-js2 js2-mode js2-refactor));; use-package))
-
+;; problematic packages:
+;; better-defaults material-theme elpy company ac-js2 js2-mode js2-refactor
+(setq package-list '(company yasnippet ivy swiper counsel));; use-package))
 ;; load emacs 24's package system. Add melpa repo.
+
+;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;; 			 ("marmalade" . "http://marmalade-repo.org/packages/")
+;; 			 ("melpa" . "http://melpa.org/packages/")))
+
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list
    'package-archives
-   '("melpa" . "http://melpa.milkbox.net/packages/") ; many packages won't show under melpa stable
-   t))
+   '("melpa" . "http://melpa.milkbox.net/packages/" ) t))
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize) ; load and activate packages
 
 
@@ -171,24 +179,24 @@
                     :background "gray50"
                     :box '(:line-width 1 :style releasedbutton)
                     )
-;;; javascript stuff
+;; ;;; javascript stuff
 
-;; javascript coloring
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-(setq ac-js2-evaluate-calls t) ; allows ac-js2 to evaluate custom code and try to color
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-;; Better imenu
-(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
-(add-hook 'js2-mode-hook #'js2-refactor-mode)
-(js2r-add-keybindings-with-prefix "C-c C-r")
-(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+;; ;; javascript coloring
+;; (add-hook 'js2-mode-hook 'ac-js2-mode)
+;; (setq ac-js2-evaluate-calls t) ; allows ac-js2 to evaluate custom code and try to color
+;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;; ;; Better imenu
+;; (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
+;; (js2r-add-keybindings-with-prefix "C-c C-r")
+;; (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
 
-;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
-;; unbind it.
-;; (define-key js-mode-map (kbd "M-.") nil)
+;; ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
+;; ;; unbind it.
+;; ;; (define-key js-mode-map (kbd "M-.") nil)
 
-;; (add-hook 'js2-mode-hook (lambda ()
-;; 			     (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+;; ;; (add-hook 'js2-mode-hook (lambda ()
+;; ;; 			     (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
 
 ;; Modelica
@@ -221,7 +229,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (js2-refactor ac-js2 yasnippet counsel company))))
+ '(package-selected-packages
+   '(material-theme gnu-elpa gnu-elpa-keyring-update elpy pylint js2-refactor ac-js2 yasnippet counsel company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
