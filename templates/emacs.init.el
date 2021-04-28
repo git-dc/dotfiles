@@ -1,26 +1,27 @@
 ;; FIRST LAUNCH SETUP STUFF:
-(setq package-list '(company yasnippet ivy swiper counsel ac-js2 js2-mode js2-refactor));; use-package))
+;; company  ac-js2 js2-mode js2-refactor yasnippet ivy swiper counsel
+;; (setq package-list '());; use-package))
 
 ;; load emacs 24's package system. Add melpa repo.
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
-   '("melpa" . "http://melpa.milkbox.net/packages/") ; many packages won't show under melpa stable
-   t))
-(package-initialize) ; load and activate packages
+;; (when (>= emacs-major-version 24)
+;;   (require 'package)
+;;   (add-to-list
+;;    'package-archives
+;;    '("melpa" . "http://melpa.milkbox.net/packages/") ; many packages won't show under melpa stable
+;;    t))
+;; (package-initialize) ; load and activate packages
 
 
-;; fetch the list of packages available
+;; ;; fetch the list of packages available
 
-(unless package-archive-contents
-  (package-refresh-contents))
+;; (unless package-archive-contents
+;;   (package-refresh-contents))
 
-;; install the missing packages
+;; ;; install the missing packages
 
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+;; (dolist (package package-list)
+;;   (unless (package-installed-p package)
+;;     (package-install package)))
 
 ;; END OF FIRST LAUNCH SETUP STUFF
 
@@ -134,7 +135,7 @@
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;; ivy
-(ivy-mode)
+;;(ivy-mode)
 
 ;;(global-set-key (kbd "C-s") 'swiper)
 ;;(global-set-key (kbd "M-x") 'counsel-M-x)
@@ -145,19 +146,19 @@
 
 ;; yasnippets
 
-(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-(setq yas/indent-line nil)
-(yas-global-mode 1)
+;;(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+;;(setq yas/indent-line nil)
+;;(yas-global-mode 1)
 
 ;; company abbreviation in the window using dabbrev and yasnippets search with company
 
-(add-hook 'after-init-hook 'global-company-mode)
-(with-eval-after-load 'company
-  (add-to-list 'company-backends '(company-dabbrev-code))
-  (setq company-tooltip-limit 20) ; bigger popup window
-  (setq company-idle-delay .3) ; decrease delay before aucompl popup appears
-  (global-set-key (kbd "C-<down>") 'company-yasnippet)
-  )
+;;(add-hook 'after-init-hook 'global-company-mode)
+;;(with-eval-after-load 'company
+;;  (add-to-list 'company-backends '(company-dabbrev-code))
+;;  (setq company-tooltip-limit 20) ; bigger popup window
+;;  (setq company-idle-delay .3) ; decrease delay before aucompl popup appears
+;;  (global-set-key (kbd "C-<down>") 'company-yasnippet)
+;;  )
 
 (set-face-attribute 'mode-line
                     nil
@@ -174,14 +175,14 @@
 ;;; javascript stuff
 
 ;; javascript coloring
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-(setq ac-js2-evaluate-calls t) ; allows ac-js2 to evaluate custom code and try to color
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-;; Better imenu
-(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
-(add-hook 'js2-mode-hook #'js2-refactor-mode)
-(js2r-add-keybindings-with-prefix "C-c C-r")
-(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+;; (add-hook 'js2-mode-hook 'ac-js2-mode)
+;; (setq ac-js2-evaluate-calls t) ; allows ac-js2 to evaluate custom code and try to color
+;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;; ;; Better imenu
+;; (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
+;; (js2r-add-keybindings-with-prefix "C-c C-r")
+;; (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
 
 ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
 ;; unbind it.
@@ -193,13 +194,13 @@
 
 ;; Modelica
 
-(setq load-path (cons "~/.emacs.d/elisp/" load-path))
-(autoload 'modelica-mode "modelica-mode" "Modelica Editing Mode" t)
-(setq auto-mode-alist (cons '("\.mo$" . modelica-mode) auto-mode-alist))
+;; (setq load-path (cons "~/.emacs.d/elisp/" load-path))
+;; (autoload 'modelica-mode "modelica-mode" "Modelica Editing Mode" t)
+;; (setq auto-mode-alist (cons '("\.mo$" . modelica-mode) auto-mode-alist))
 
 ;; Modelica browsing
-(autoload 'mdc-browse "mdc-browse" "Modelica Class Browsing" t)
-(autoload 'br-mdc "br-mdc" "Modelica Class Browsing" t)
+;; (autoload 'mdc-browse "mdc-browse" "Modelica Class Browsing" t)
+;; (autoload 'br-mdc "br-mdc" "Modelica Class Browsing" t)
 
 (defvar br-env-lang-avector
   '[
@@ -221,8 +222,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (js2-refactor ac-js2 yasnippet counsel company))))
-(custom-set-faces
+ ;; '(package-selected-packages (quote (js2-refactor ac-js2 yasnippet counsel company))))
+)
+ (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
