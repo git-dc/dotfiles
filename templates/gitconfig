@@ -9,3 +9,5 @@
 	pretty = oneline
 [push]
 	default = simple
+[init]
+	defaultBranch = master
