@@ -1,1 +1,0 @@
-/home/dc/.dotfiles/extensions/fuzzy-clock.extension.js
