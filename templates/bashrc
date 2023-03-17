@@ -125,5 +125,8 @@ export PATH="/home/dc/.miniconda3/bin:$PATH"
 # added by dc to disable touch screen
 #xinput disable $(xinput | grep Touchscreen | cut -f2 -d"=" | cut -f1 -d"[")
 
+# added by dc to remap cursor finder to Shift_R
+gsettings set org.gnome.mutter locate-pointer-key Shift_R
+
 # added by dc to start cmd on newline |>
 export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$\n>"
