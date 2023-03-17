@@ -15,3 +15,6 @@ alias mk-exe="sudo chmod u+x $1"
 alias gits="git status"
 alias ls="ls -laB --color=yes"
 alias open="xdg-open ./"
+alias sydo="sudo"
+alias hibernate='echo "Hibernate" && sudo systemctl hibernate'
+alias suspend='echo "Suspend then Hibernate" && sudo systemctl suspend-then-hibernate'
