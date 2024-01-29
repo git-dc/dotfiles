@@ -1,31 +1,32 @@
 ;; FIRST LAUNCH SETUP STUFF:
 ;; company  ac-js2 js2-mode js2-refactor yasnippet ivy swiper counsel
-;; (setq package-list '());; use-package))
+(setq package-list '(use-package counsel blacken company ivy))
 
-;; load emacs 24's package system. Add melpa repo.
-;; (when (>= emacs-major-version 24)
-;;   (require 'package)
-;;   (add-to-list
-;;    'package-archives
-;;    '("melpa" . "http://melpa.milkbox.net/packages/") ; many packages won't show under melpa stable
-;;    t))
-;; (package-initialize) ; load and activate packages
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
 
 
-;; ;; fetch the list of packages available
+;; fetch the list of packages available
 
-;; (unless package-archive-contents
-;;   (package-refresh-contents))
+(unless package-archive-contents
+  (package-refresh-contents))
 
-;; ;; install the missing packages
+;; install the missing packages
 
-;; (dolist (package package-list)
-;;   (unless (package-installed-p package)
-;;     (package-install package)))
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;; END OF FIRST LAUNCH SETUP STUFF
 
-
+;; (use-package python-black
+;;   :demand t
+;;   :after python
+;;   :hook (python-mode . python-black-on-save-mode-enable-dwim))
 
 ;; general emacs settings
 
@@ -37,11 +38,13 @@
 (delete-selection-mode 1) ; replace selected text if selected 
 
 
-(add-hook 'python-mode-hook
-	  (lambda ()
-	    (setq indent-tabs-mode f)
-	    (setq tab-width 4)
-	    (setq python-indent-offset 4)))
+;; (add-hook 'python-mode-hook
+;; 	  (lambda ()
+;; 	    (setq indent-tabs-mode f)
+;; 	    (setq tab-width 4)
+;; 	    (setq python-indent-offset 4)))
+
+(add-hook 'python-mode-hook 'blacken-mode)
 
 ;; custom functions:
 
@@ -222,9 +225,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; '(package-selected-packages (quote (js2-refactor ac-js2 yasnippet counsel company))))
-)
- (custom-set-faces
+ '(package-selected-packages '(blacken use-package counsel)))
+ 
+(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
